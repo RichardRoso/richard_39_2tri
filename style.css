@@ -93,6 +93,36 @@ margin: 0px;
 font-size: 24px;
 }
 @media screen and (min-width: 768px) {
+    /*barra azul de fundo*/
+.barra{
+background-color: var(--fundo-senha);
+height: 30px;
+width: 100%;
+
+}
+.forca{
+height: 30px;
+position: relative; /*sobrepor a barra de fundo*/
+bottom: 30px;
+}
+.fraca{
+width: 25%;
+background-color: #E71B32;
+}
+.media{
+width: 50%;
+background-color: #faf408;
+
+}
+.forte{
+width: 100%;
+background-color: #00ff85;
+}
+/*deixa a legende fraca, média, forte em linha*/
+.parametro-senha-textos{
+display: flex;
+justify-content: space-between;
+}
 .parametro-coluna__senha{
 flex-direction: row;
 }
