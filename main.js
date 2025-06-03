@@ -1,58 +1,60 @@
-const numeroSenha = document.getElementById('tamanho-senha');
+const tamanhoSenhaEl = document.getElementById('tamanho-senha');
 const btnDiminuir = document.getElementById('btn-diminuir');
 const btnAumentar = document.getElementById('btn-aumentar');
 const campoSenha = document.getElementById('campo-senha');
 
 let tamanhoSenha = 12;
-numeroSenha.textContent = tamanhoSenha;
 
-btnDiminuir.onclick = () => {
-  if (tamanhoSenha > 1) {
-    tamanhoSenha--;
-    numeroSenha.textContent = tamanhoSenha;
-  }
-};
-
-btnAumentar.onclick = () => {
-  if (tamanhoSenha < 20) {
-    tamanhoSenha++;
-    numeroSenha.textContent = tamanhoSenha;
-  }
-};
-
-// Você pode adicionar aqui a função que gera a senha aleatória
-// Exemplo simples para mostrar no input:
-function gerarSenha(tamanho) {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
-  let senha = "";
-  for (let i = 0; i < tamanho; i++) {
-    senha += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return senha;
+function atualizaTamanho() {
+  tamanhoSenhaEl.textContent = tamanhoSenha;
 }
 
-// Atualiza a senha gerada toda vez que mudar o tamanho
-function atualizarSenha() {
-  const senhaGerada = gerarSenha(tamanhoSenha);
-  campoSenha.value = senhaGerada;
-}
-
-// Gera senha inicial
-atualizarSenha();
-
-// Atualiza a senha sempre que aumentar/diminuir tamanho
-btnDiminuir.onclick = () => {
+btnDiminuir.addEventListener('click', () => {
   if (tamanhoSenha > 1) {
     tamanhoSenha--;
-    numeroSenha.textContent = tamanhoSenha;
-    atualizarSenha();
+    atualizaTamanho();
+    gerarSenha();
   }
-};
+});
 
-btnAumentar.onclick = () => {
+btnAumentar.addEventListener('click', () => {
   if (tamanhoSenha < 20) {
     tamanhoSenha++;
-    numeroSenha.textContent = tamanhoSenha;
-    atualizarSenha();
+    atualizaTamanho();
+    gerarSenha();
   }
-};
+});
+
+function gerarSenha() {
+  const usarMaiusculo = document.getElementById('maiusculo').checked;
+  const usarMinusculo = document.getElementById('minusculo').checked;
+  const usarNumero = document.getElementById('numero').checked;
+  const usarSimbolo = document.getElementById('simbolo').checked;
+
+  let caracteres = '';
+  if (usarMaiusculo) caracteres += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (usarMinusculo) caracteres += 'abcdefghijklmnopqrstuvwxyz';
+  if (usarNumero) caracteres += '0123456789';
+  if (usarSimbolo) caracteres += '!@#$%^&*()_+~`|}{[]:;?><,./-=';
+
+  if (!caracteres) {
+    campoSenha.value = '';
+    return;
+  }
+
+  let senha = '';
+  for (let i = 0; i < tamanhoSenha; i++) {
+    senha += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+  }
+
+  campoSenha.value = senha;
+}
+
+// Inicializa texto e senha no carregamento
+atualizaTamanho();
+gerarSenha();
+
+// Regerar senha quando checkbox mudar
+document.querySelectorAll('.checkbox').forEach(checkbox => {
+  checkbox.addEventListener('change', gerarSenha);
+});
