@@ -81,21 +81,22 @@ body {
   justify-content: center;
 }
 
-/* Aqui estão as alterações importantes */
+/* Ajustes para manter o conteúdo centralizado, só os botões ficam no canto */
 .parametro-senha {
-  position: relative; /* para os botões absolute funcionarem */
+  position: relative; /* necessário para posicionar os botões */
   width: 50%;
   margin: 0 auto;
   padding-bottom: 60px; /* espaço para os botões */
+  text-align: center; /* centraliza o conteúdo */
 }
 
 .parametro-senha-botoes {
-  display: flex;
-  justify-content: flex-start; /* alinha os botões à esquerda */
-  gap: 10px;
-  position: absolute; /* posiciona os botões no canto inferior */
+  position: absolute;
   bottom: 10px;
   left: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
   width: auto;
 }
 
@@ -117,7 +118,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  /*barra azul de fundo*/
+  /* barra azul de fundo */
   .barra {
     background-color: var(--fundo-senha);
     height: 30px;
@@ -126,7 +127,7 @@ body {
 
   .forca {
     height: 30px;
-    position: relative; /*sobrepor a barra de fundo*/
+    position: relative; /* sobrepor a barra de fundo */
     bottom: 30px;
   }
 
@@ -145,7 +146,7 @@ body {
     background-color: #00ff85;
   }
 
-  /*deixa a legende fraca, média, forte em linha*/
+  /* deixa a legenda fraca, média, forte em linha */
   .parametro-senha-textos {
     display: flex;
     justify-content: space-between;
