@@ -12,12 +12,15 @@
 
 * {
   font-weight: 400;
+  box-sizing: border-box;
 }
 
 body {
   color: var(--branco);
   background-color: var(--cor-de-fundo);
   font-family: var(--roboto);
+  margin: 0;
+  padding: 0;
 }
 
 .titulo-principal {
@@ -39,6 +42,7 @@ body {
   background: var(--fundo-senha);
   padding: 24px;
   border-bottom: 6px solid var(--borda);
+  text-align: center;
 }
 
 #campo-senha {
@@ -48,6 +52,7 @@ body {
   font-family: var(--roboto-mono);
   font-size: 40px;
   width: 70%;
+  text-align: center;
 }
 
 #campo-senha:focus {
@@ -69,27 +74,27 @@ body {
 .parametro-titulo {
   font-family: var(--roboto-mono);
   font-size: 28px;
+  margin-bottom: 24px;
 }
 
 .parametro-senha__titulo {
   font-size: 24px;
+  margin-bottom: 16px;
 }
 
-.parametro-coluna__senha {
+/* Container geral das configurações da senha */
+.parametro-senha {
+  position: relative;
+  width: 50%;
+  margin: 0 auto 48px auto;
+  min-height: 130px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
 }
 
-/* Ajustes para manter o conteúdo centralizado, só os botões ficam no canto */
-.parametro-senha {
-  position: relative; /* necessário para posicionar os botões */
-  width: 50%;
-  margin: 0 auto;
-  padding-bottom: 60px; /* espaço para os botões */
-  text-align: center; /* centraliza o conteúdo */
-}
-
+/* Botões posicionados no canto inferior esquerdo */
 .parametro-senha-botoes {
   position: absolute;
   bottom: 10px;
@@ -115,44 +120,56 @@ body {
   padding: 24px;
   margin: 0px;
   font-size: 24px;
+  user-select: none;
+  width: 60px;
+  text-align: center;
+}
+
+.parametro-senha-checkbox {
+  margin-bottom: 8px;
+}
+
+.parametro-senha-checkbox input {
+  margin-right: 8px;
+}
+
+.barra {
+  background-color: var(--fundo-senha);
+  height: 30px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.forca {
+  height: 30px;
+  position: relative; /* sobrepor a barra de fundo */
+  bottom: 30px;
+}
+
+.fraca {
+  width: 25%;
+  background-color: #E71B32;
+}
+
+.media {
+  width: 50%;
+  background-color: #faf408;
+}
+
+.forte {
+  width: 100%;
+  background-color: #00ff85;
+}
+
+.parametro-senha-textos {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
 }
 
 @media screen and (min-width: 768px) {
-  /* barra azul de fundo */
-  .barra {
-    background-color: var(--fundo-senha);
-    height: 30px;
-    width: 100%;
-  }
-
-  .forca {
-    height: 30px;
-    position: relative; /* sobrepor a barra de fundo */
-    bottom: 30px;
-  }
-
-  .fraca {
-    width: 25%;
-    background-color: #E71B32;
-  }
-
-  .media {
-    width: 50%;
-    background-color: #faf408;
-  }
-
-  .forte {
-    width: 100%;
-    background-color: #00ff85;
-  }
-
-  /* deixa a legenda fraca, média, forte em linha */
-  .parametro-senha-textos {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .parametro-coluna__senha {
     flex-direction: row;
   }
 }
+
