@@ -28,8 +28,8 @@ body {
     margin-top: 80px;
 }
 
-.conteudo-titulo img { /* Estilo para a imagem do cadeado */
-    width: 60px; /* Ajuste o tamanho da imagem se precisar */
+.conteudo-titulo img {
+    width: 60px;
     height: auto;
     margin-bottom: 15px;
 }
@@ -60,13 +60,12 @@ body {
     text-align: center;
 }
 
-.conteudo-senha label { /* Estilo para o label "Senha" */
-    display: block; /* Para que o input fique abaixo */
+.conteudo-senha label {
+    display: block;
     margin-bottom: 10px;
     font-size: 18px;
     color: var(--branco);
 }
-
 
 #campo-senha {
     background-color: var(--fundo-senha);
@@ -75,27 +74,25 @@ body {
     font-family: var(--roboto-mono);
     font-size: 40px;
     width: 70%;
-    text-align: center; /* Centraliza o texto da senha */
-    padding: 10px 0; /* Adiciona um pouco de padding vertical */
+    text-align: center;
+    padding: 10px 0;
 }
 
 #campo-senha:focus {
     outline: none;
 }
 
-/* ---------------------------------------------------- */
 /* NOVO CSS PARA ORGANIZAÇÃO DO LAYOUT */
-/* ---------------------------------------------------- */
 .parametro {
     background-color: var(--fundo-texto);
     border: 2px solid var(--borda);
     margin-top: 32px;
     padding: 24px;
-    display: flex; /* Habilita o Flexbox */
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-    justify-content: space-around; /* Distribui o espaço entre e ao redor dos itens */
-    align-items: flex-start; /* Alinha os itens pelo topo */
-    gap: 30px; /* Espaçamento entre os itens */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
 }
 
 .parametro-titulo {
@@ -104,31 +101,63 @@ body {
     color: var(--branco);
     text-align: center;
     margin-bottom: 24px;
-    width: 100%; /* Garante que o título ocupe a largura total e não seja afetado pelo flex */
+    width: 100%;
 }
 
 .parametro-senha {
-    flex: 1; /* Permite que cada item ocupe o espaço disponível igualmente */
-    min-width: 280px; /* Largura mínima para cada coluna em telas menores */
-    max-width: 350px; /* Largura máxima para cada coluna em telas maiores */
-    padding: 15px; /* Padding interno para cada caixa */
-    border-radius: 5px; /* Bordas arredondadas */
-    box-sizing: border-box; /* Inclui padding e border na largura total */
-    /* Se quiser, pode adicionar um background-color diferente para cada 'parametro-senha' */
-    /* background-color: rgba(0, 0, 0, 0.1); */
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    padding: 15px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-/* ---------------------------------------------------- */
-/* FIM DO NOVO CSS */
-/* ---------------------------------------------------- */
+/* Estilo para o botão Copiar Senha */
+.copiar-senha-botao {
+    background-color: var(--borda);
+    color: var(--branco);
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.copiar-senha-botao:hover {
+    background-color: #0060d0;
+    transform: translateY(-2px);
+}
+
+.copiar-senha-botao:active {
+    transform: translateY(0);
+}
+
+/* Estilo para o span de mensagem (opcional: 'Copiado!') */
+.copiar-senha-mensagem {
+    color: #00ff85;
+    font-size: 16px;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.copiar-senha-mensagem.visivel {
+    opacity: 1;
+}
 
 
 .parametro-senha-botoes {
     display: flex;
-    justify-content: center; /* Centraliza os botões de + e - */
+    justify-content: center;
     align-items: center;
     gap: 12px;
-    /* padding-left: 10px; */ /* Removido para centralizar */
 }
 
 .parametro-senha__botao {
@@ -154,7 +183,7 @@ body {
     color: var(--branco);
     user-select: none;
     margin: 0;
-    min-width: 60px; /* Garante que o número não esprema */
+    min-width: 60px;
     text-align: center;
 }
 
@@ -164,10 +193,8 @@ body {
 
 .parametro-senha-checkbox input {
     margin-right: 8px;
-    /* Estilos para o checkbox customizado se desejar */
-    /* transform: scale(1.2); */
 }
-.parametro-senha-checkbox label { /* Estilo para o texto do checkbox */
+.parametro-senha-checkbox label {
     color: var(--branco);
     font-size: 18px;
     cursor: pointer;
@@ -178,19 +205,18 @@ body {
     font-size: 24px;
     color: var(--branco);
     margin-bottom: 12px;
-    text-align: center; /* Centraliza o título de cada subseção */
+    text-align: center;
 }
 
 .barra {
-    background-color: var(--fundo-senha); /* Cor de fundo da barra vazia */
+    background-color: var(--fundo-senha);
     height: 30px;
-    width: 0%; /* Começa com 0% e será preenchido pelo JS */
+    width: 0%;
     margin-top: 24px;
-    border-radius: 5px; /* Bordas arredondadas para a barra de progresso */
+    border-radius: 5px;
     transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
-/* Os textos "Fraca", "Média", "Forte" */
 .parametro-senha-textos {
     display: flex;
     justify-content: space-between;
@@ -199,24 +225,24 @@ body {
     width: 100%;
 }
 .parametro-senha-textos p {
-    flex: 1; /* Faz com que cada texto ocupe igualmente o espaço disponível */
+    flex: 1;
     text-align: center;
-    font-size: 14px; /* Ajuste o tamanho da fonte se desejar */
+    font-size: 14px;
 }
 
 
 /* Media Queries para Responsividade */
 @media screen and (max-width: 900px) {
     .parametro-senha {
-        min-width: 45%; /* Permite que 2 colunas caibam em telas de largura média */
+        min-width: 45%;
     }
 }
 
 @media screen and (max-width: 600px) {
     .parametro-senha {
-        min-width: 100%; /* Cada coluna ocupa a largura total em telas muito pequenas */
+        min-width: 100%;
     }
-    .conteudo-titulo img { /* Ajusta o tamanho da imagem em telas menores */
+    .conteudo-titulo img {
         width: 50px;
     }
     .titulo-principal {
@@ -227,6 +253,6 @@ body {
     }
     #campo-senha {
         font-size: 32px;
-        width: 90%; /* Aumenta a largura em telas menores */
+        width: 90%;
     }
 }
