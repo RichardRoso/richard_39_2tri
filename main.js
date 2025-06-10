@@ -5,8 +5,8 @@ const btnAumentar = document.getElementById('btn-aumentar');
 const campoSenha = document.getElementById('campo-senha');
 const barraForca = document.querySelector('.barra');
 const textosForca = document.querySelectorAll('.parametro-senha-textos p');
-const copiarSenhaBotao = document.getElementById('copiar-senha-botao'); // Novo: seleção do botão de copiar
-const conteudoSenhaDiv = document.querySelector('.conteudo-senha'); // Novo: para adicionar mensagem de 'Copiado!'
+const copiarSenhaBotao = document.getElementById('copiar-senha-botao'); // Seleção do botão de copiar
+const conteudoSenhaDiv = document.querySelector('.conteudo-senha'); // Para adicionar mensagem de 'Copiado!'
 
 // Variável para armazenar o tamanho atual da senha
 let tamanhoSenha = 12;
@@ -112,31 +112,39 @@ document.querySelectorAll('.checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', gerarSenha);
 });
 
-// Novo: Adiciona funcionalidade de copiar senha ao clipboard
+// Adiciona funcionalidade de copiar senha ao clipboard
 copiarSenhaBotao.addEventListener('click', () => {
     campoSenha.select();
     campoSenha.setSelectionRange(0, 99999); // Para dispositivos móveis
 
+    // Tenta copiar o texto para a área de transferência
     navigator.clipboard.writeText(campoSenha.value)
         .then(() => {
+            // Cria um elemento para a mensagem "Copiado!"
             let mensagem = document.createElement('span');
             mensagem.classList.add('copiar-senha-mensagem');
             mensagem.textContent = 'Copiado!';
-            conteudoSenhaDiv.appendChild(mensagem);
+            conteudoSenhaDiv.appendChild(mensagem); // Adiciona a mensagem dentro do div .conteudo-senha
 
-            setTimeout(() => {
-                mensagem.classList.add('visivel');
-            }, 10);
+            // Força um reflow para garantir que a transição de opacidade funcione
+            void mensagem.offsetWidth; 
 
+            // Torna a mensagem visível
+            mensagem.classList.add('visivel');
+
+            // Esconde e remove a mensagem após um tempo
             setTimeout(() => {
                 mensagem.classList.remove('visivel');
+                // Remove o elemento da DOM após a transição de saída
                 mensagem.addEventListener('transitionend', () => {
                     mensagem.remove();
-                });
-            }, 2000);
+                }, { once: true }); // Garante que o listener seja removido após uma execução
+            }, 2000); // Mensagem visível por 2 segundos
+
         })
         .catch(err => {
             console.error('Falha ao copiar a senha: ', err);
+            // Alerta o usuário se a cópia falhar
             alert('Falha ao copiar a senha. Por favor, copie manualmente.');
         });
 });
