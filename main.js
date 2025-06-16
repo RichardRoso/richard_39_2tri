@@ -22,6 +22,7 @@ btnDiminuir.addEventListener('click', () => {
     if (tamanhoSenha > 1) {
         tamanhoSenha--;
         atualizaTamanhoDisplay();
+        // Chamada para gerar a senha com o novo tamanho (conforme discutido)
         gerarSenha();
     }
 });
@@ -30,6 +31,7 @@ btnAumentar.addEventListener('click', () => {
     if (tamanhoSenha < 20) {
         tamanhoSenha++;
         atualizaTamanhoDisplay();
+        // Chamada para gerar a senha com o novo tamanho (conforme discutido)
         gerarSenha();
     }
 });
@@ -89,7 +91,7 @@ function atualizarForcaSenha(senha) {
     barraForca.style.backgroundColor = corDaBarra;
 
     textosForca.forEach(p => p.style.color = 'var(--branco)');
-    
+
     if (larguraDaBarra === '33%') {
         textosForca[0].style.color = corDaBarra;
     } else if (larguraDaBarra === '66%') {
@@ -105,7 +107,7 @@ function atualizarForcaSenha(senha) {
 // 1. Define o tamanho inicial da senha na tela (ex: 12)
 atualizaTamanhoDisplay();
 
-// 2. Gera a primeira senha quando a página carrega
+// 2. Gera a primeira senha quando a página carrega (conforme discutido)
 gerarSenha();
 
 // 3. Adiciona um event listener para cada checkbox.
@@ -128,7 +130,7 @@ copiarSenhaBotao.addEventListener('click', () => {
             conteudoSenhaDiv.appendChild(mensagem); // Adiciona a mensagem dentro do div .conteudo-senha
 
             // Força um reflow para garantir que a transição de opacidade funcione
-            void mensagem.offsetWidth; 
+            void mensagem.offsetWidth;
 
             // Torna a mensagem visível
             mensagem.classList.add('visivel');
